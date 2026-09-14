@@ -2,6 +2,8 @@
 
 This project builds a local PostgreSQL 19 benchmark for comparing a traditional SQL join traversal with the SQL/PGQ `GRAPH_TABLE` syntax over the same service dependency graph.
 
+## Article for reference 
+- https://medium.com/@vatsuvaksi/the-postgres-evolution-from-sql-to-vectors-to-graphs-3cbdf3d6af14?sharedUserId=vatsuvaksi
 ## Project Layout
 
 - `docker-compose.yml` starts PostgreSQL 19 and loads the SQL files in `sql/`.
@@ -141,3 +143,5 @@ Stop the database and remove seeded data:
 ```bash
 docker compose down -v
 ```
+
+
