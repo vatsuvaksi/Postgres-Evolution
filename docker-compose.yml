@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: ${POSTGRES_IMAGE:-postgres:19beta3}
+    container_name: pg19-graph-benchmark
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: graphdemo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg19_data:/var/lib/postgresql
+      - ./sql:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d graphdemo"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  pg19_data:
